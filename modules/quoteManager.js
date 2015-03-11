@@ -1,5 +1,5 @@
 var models = require('./models'),
-    quote = models.quote;
+    quote = models.quotes;
 
 exports.newQuote = function(newData, callback) {
     var newQuote = new quote(newData);
@@ -8,9 +8,4 @@ exports.newQuote = function(newData, callback) {
       console.log(newQuote);
       callback(null, newQuote, 'new quote');
     });
-}
-
-
-exports.delQuote = function(newData, callback) {
-
 }

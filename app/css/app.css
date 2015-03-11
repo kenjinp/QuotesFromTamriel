@@ -1,0 +1,50 @@
+@font-face {
+    font-family: rune;
+    src: url('Runes.ttf');
+    font-weight:normal;
+}
+
+body, html {
+  background: #333;
+  font-family: rune;
+  position:relative;
+}
+
+a{
+  color:white;
+  font-weight:bold;
+}
+
+.page {
+  position:relative;
+  margin: 0 auto;
+  width:50%;
+  margin-top:200px;
+  text-align:right;
+}
+
+.author {
+  margin: 0 auto;
+  text-align:right;
+  width:100%;
+  font-style: italic;
+
+}
+
+.author::before{
+  content:'― ';
+}
+
+h3::before{
+  content:'"';
+}
+h3::after{
+  content:'"';
+}
+
+div.quoteblock {
+  padding:100px;
+  position:relative;
+  background-color:#1abc89;
+  color:white;
+}

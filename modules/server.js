@@ -4,6 +4,7 @@ var http = require('http'),
     path = require('path'),
     fs = require('fs'),
     apiServer = require('./apiServer'),
+    fileServer = require('./fileServer'),
     qs = require('querystring');
 
 module.exports = http.createServer(function (req, res) { ;
@@ -13,6 +14,6 @@ module.exports = http.createServer(function (req, res) { ;
     if (uri.split('/')[1] === 'api') {
         apiServer(uri, req, res);
     } else {
-        console.log('bad response: not api req');
+        fileServer(file, uri, req, res);
     }
 });
