@@ -1,0 +1,26 @@
+{
+  "name": "QuotesFromTamriel",
+  "version": "1.0.0",
+  "description": "database and api for memerable quotes from The Elder Scrolls",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenjinp/QuotesFromTamriel.git"
+  },
+  "author": "Kenneth Pirman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kenjinp/QuotesFromTamriel/issues"
+  },
+  "homepage": "https://github.com/kenjinp/QuotesFromTamriel",
+  "dependencies": {
+    "expect": "^1.6.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.1",
+    "mongoose": "^3.8.24",
+    "mongoose-simple-random": "^0.3.0"
+  }
+}
