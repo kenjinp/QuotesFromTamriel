@@ -5,9 +5,20 @@
 }
 
 body, html {
-  background: #333;
-  font-family: rune;
+  font-family: Open Sans;
   position:relative;
+  height:100%;
+  margin:0px;
+  padding:0px;
+}
+
+body {
+  //background: rgba(58,64,62,0.8);
+  overflow:hidden;
+}
+
+html {
+  background-size:cover;
 }
 
 a{
@@ -16,23 +27,19 @@ a{
 }
 
 .page {
-  position:relative;
-  margin: 0 auto;
-  width:50%;
-  margin-top:200px;
-  text-align:right;
+  width: 100%;
+  height: 100%;
 }
 
 .author {
-  margin: 0 auto;
-  text-align:right;
-  width:100%;
+  float:right;
   font-style: italic;
-
+  text-decoration: none;
 }
 
 .author::before{
   content:'― ';
+  text-decoration: none;
 }
 
 h3::before{
@@ -43,8 +50,41 @@ h3::after{
 }
 
 div.quoteblock {
-  padding:100px;
-  position:relative;
+
+  position:absolute;
+  top:50%;
+  left:25%;
+  color:#e9e9e9;
   background-color:#1abc89;
-  color:white;
+  width:50%;
+  height:30%;
+  margin:0 auto;
+  padding:50px;
+}
+
+.avatar {
+  background-color:#1abc89;
+  background-image:url('/app/img/akatosh.png');
+  background-size:contain;
+  width:100px;
+  height:190px;
+  margin:0 auto;
+  margin-bottom:20px;
+}
+
+p#space {
+  position:fixed;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  color:#CCCCCC;
+  font-weight:100;
+}
+strong {
+  font-weight:900;
+}
+
+.quoteblock > h3 {
+  font-size:30px;
+  font-weight:300;
 }

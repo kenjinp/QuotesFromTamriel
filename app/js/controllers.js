@@ -4,16 +4,55 @@ QFT.controller('ApplicationController', function (
   $rootScope,
   $scope,
   $location) {
+
+    function mouseGridShift() {
+      $( "html" ).mousemove(function( event ) {
+        var tempX = event.pageX,
+            viewportWidth = $(window).width(),
+            axis = $('.quoteblock').width() / 2,
+            graphBoundryX = viewportWidth - axis,
+            limitY = 26,
+            x = (tempX - axis),
+            y = (limitY*Math.sin((1/(graphBoundryX*0.6666)*x)));
+        $(".quoteblock").css({'transform':'perspective(600px) rotateY( '+ y +'deg )'});
+      });
+    }
+
+    //mouseGridShift();
+
+    $rootScope.redditBackgroundGrabber = function() {
+      reddit.hot('skyrimporn').limit(50).fetch(function (res) {
+
+        function grabRandom (res) {
+          var randomInt = Math.floor(Math.random() * res.data.children.length);
+          var postData = res.data.children[randomInt].data;
+          var extList = postData.url.split('.');
+          var ext = extList[extList.length - 1];
+          console.log(ext);
+          if ( ext !== 'jpg') {
+            return grabRandom(res);
+          } else {
+            return postData;
+          }
+        }
+
+        var postData = grabRandom(res);
+        $('html').css("background-image", "url("+postData.url+")");
+        $('#title').text(postData.title+' ');
+        $('#author').text(postData.author);
+      })
+    };
+
+    $rootScope.redditBackgroundGrabber();
 });
 
 
 QFT.controller("HomeCtrl", function (
+  $rootScope,
   $scope,
   Quotes) {
 
   $scope.pageClass = 'page-home';
-
-  $scope.title = 'Whatever This is!';
 
   $scope.quote = {};
 
@@ -22,12 +61,27 @@ QFT.controller("HomeCtrl", function (
   Quotes.random()
   .success(function(data, status, headers, config) {
     $scope.quote = data;
-    console.log(data);
     $scope.searchlink = 'http://uesp.net/w/index.php?search='+ data.author.replace(/[^a-zA-Z0-9]/g,'+');
   })
   .error(function(data, status, headers, config) {
-    alert(data);
+    console.log('there were errors');
   });
+
+  $('body').keyup(function(e){
+   if(e.keyCode == 8){
+   }
+   if(e.keyCode == 32){
+     Quotes.random()
+     .success(function(data, status, headers, config) {
+       $scope.quote = data;
+       $scope.searchlink = 'http://uesp.net/w/index.php?search='+ data.author.replace(/[^a-zA-Z0-9]/g,'+');
+       $rootScope.redditBackgroundGrabber();
+     })
+     .error(function(data, status, headers, config) {
+       console.log('there were errors');
+     });
+   }
+});
 
 });
 
