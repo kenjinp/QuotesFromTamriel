@@ -8,6 +8,9 @@ module.exports = function apiServer(uri, req, res, callback) {
     function goodRes (data, code, report) {
       if (code === undefined) code = 200;
       if (report) console.log(report);
+      res.writeHead(code,
+        {
+          'Content-Type': 'application/json' });
       res.write(JSON.stringify(data));
       res.end();
     }

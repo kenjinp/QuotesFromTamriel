@@ -63,13 +63,24 @@ div.quoteblock {
 }
 
 .avatar {
+  position:relative;
   background-color:#1abc89;
-  background-image:url('/app/img/akatosh.png');
+  //background-image:url('/app/img/akatosh.png');
   background-size:contain;
+  //-webkit-mask-image: url('/app/img/akatosh.png');
+  -webkit-mask: url('/app/img/akatosh2.png') top left / cover;
   width:100px;
   height:190px;
   margin:0 auto;
   margin-bottom:20px;
+}
+
+#thumbnail {
+  margin-top:60px;
+  -webkit-mask: url('/app/img/akatosh.png') top left / cover;
+  background-size:cover;
+  width:100%;
+  height:100%;
 }
 
 p#space {
@@ -88,3 +99,19 @@ strong {
   font-size:30px;
   font-weight:300;
 }
+
+
+//media queries
+// Landscape phones and down
+@media (max-width: 480px) {}
+// Landscape phone to portrait tablet
+@media (min-width:481px) and (max-width: 767px) {
+  div.quoteblock {
+    width:100%;
+    top:0%;
+    left:0%;
+  }
+}
+  // Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 979px) {}
+@media (min-width: 1200px) {}

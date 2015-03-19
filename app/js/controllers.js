@@ -28,7 +28,6 @@ QFT.controller('ApplicationController', function (
           var postData = res.data.children[randomInt].data;
           var extList = postData.url.split('.');
           var ext = extList[extList.length - 1];
-          console.log(ext);
           if ( ext !== 'jpg') {
             return grabRandom(res);
           } else {
@@ -37,9 +36,17 @@ QFT.controller('ApplicationController', function (
         }
 
         var postData = grabRandom(res);
-        $('html').css("background-image", "url("+postData.url+")");
+        console.log(postData);
+        if ($(window).width() > 768) {
+           $('html').css("background-image", "url("+postData.url+")");
+        } else {
+          $('html').css("background-image", "none");
+          $('html').css("background-color", "#1abc89");
+        }
         $('#title').text(postData.title+' ');
         $('#author').text(postData.author);
+        $('#thumbnail').css("background-image", "url("+postData.url+")");
+        $('#reddit-link').attr('href', 'http://reddit.com/'+postData.permalink);
       })
     };
 
