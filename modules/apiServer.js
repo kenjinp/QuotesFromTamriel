@@ -9,7 +9,7 @@ module.exports = function apiServer(uri, req, res, callback) {
       if (code === undefined) code = 200;
       if (report) console.log(report);
       res.writeHead(code,
-        {
+        { 'Access-Control-Allow-Origin': 'localhost'
           'Content-Type': 'application/json' });
       res.write(JSON.stringify(data));
       res.end();
