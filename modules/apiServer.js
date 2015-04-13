@@ -10,7 +10,9 @@ module.exports = function apiServer(uri, req, res, callback) {
       if (report) console.log(report);
       res.writeHead(code,
         { 'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json' });
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'GET, PUT, PATCH, POST, DELETE'});
       res.write(JSON.stringify(data));
       res.end();
     }
