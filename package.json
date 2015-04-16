@@ -22,5 +22,8 @@
     "mocha": "^2.2.1",
     "mongoose": "^3.8.24",
     "mongoose-simple-random": "^0.3.0"
+  },
+  "devDependencies": {
+    "express": "^4.12.3"
   }
 }

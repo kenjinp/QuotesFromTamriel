@@ -8,13 +8,13 @@ module.exports = function apiServer(uri, req, res, callback) {
     function goodRes (data, code, report) {
       if (code === undefined) code = 200;
       if (report) console.log(report);
-      res.writeHead(code,
+      res.set(
         { 'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Authorization',
           'Access-Control-Allow-Methods': 'GET, PUT, PATCH, POST, DELETE'});
-      res.write(JSON.stringify(data));
-      res.end();
+      res.json(data);
+      //res.end();
     }
 
     //Bad Request! Bad Bad Bad!
@@ -42,6 +42,8 @@ module.exports = function apiServer(uri, req, res, callback) {
           });
       });
     }
+
+    console.log(uri);
 
     var pathArray = uri.split('/');
 
